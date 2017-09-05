@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+    <!--<link rel="stylesheet" href="./css/onsenui.css">-->
+    <!--<link rel="stylesheet" href="./css/onsen-component.css">-->
+    <!--<script src="./js/onsenui.min.js"></script>-->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="js/test.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <!--<meta charset="utf-8"/>-->
+    <!--<meta name="format-detection" content="telephone=no"/>-->
+    <!--<meta name="msapplication-tap-highlight" content="no"/>-->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
+</head>
+<body>
+
+<!--login page-->
+<ons-navigator title="Navigator" id="myNav">
+    <ons-page id="login">
+
+        <ons-dialog id="loginfail">
+            <div style="text-align: center; padding: 10px;">
+                <p>
+                    Invalid credentials
+                <p>
+
+                <p>
+                    <ons-button modifier="quiet" onclick="popup_close('loginfail')">Close</ons-button>
+                </p>
+            </div>
+        </ons-dialog>
+
+        <ons-toolbar>
+            <div class="center">Login</div>
+        </ons-toolbar>
+
+        <br><br><br><br><br><br>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <p>
+                <ons-input style="width: 80%" id="username" modifier="underbar" placeholder="Username"
+                           float></ons-input>
+            </p>
+            <br>
+            <p>
+                <ons-input style="width: 80%" id="password" modifier="underbar" type="password" placeholder="Password"
+                           float></ons-input>
+            </p>
+            <br>
+            <p style="margin-top: 0px;">
+                <ons-button style="width: 80%" modifier="large" onclick="login()">Login</ons-button>
+            </p>
+        </div>
+    </ons-page>
+</ons-navigator>
+
+<ons-template id="page2">
+    <ons-page>
+        <ons-toolbar>
+            <div class="center">Dashboard</div>
+        </ons-toolbar>
+
+        <ons-tabbar position="auto">
+            <ons-tab onclick="" page="page5" label="Dashboard" icon="ion-home, material:md-home" active>
+            </ons-tab>
+            <ons-tab page="page3" label="Messages" icon="md-comment-outline" active-icon="md-comment">
+            </ons-tab>
+            <ons-tab page="page4" label="Contacts" icon="md-account-box-o" active-icon="md-phone">
+            </ons-tab>
+        </ons-tabbar>
+
+        <p>this is the dashboard</p>
+    </ons-page>
+</ons-template>
+
+<!--Message-->
+<template id="page3">
+    <ons-page>
+
+        <br><br><br><br><br><br>
+        <div style="text-align: center; margin-top: 30px;">
+            <!--<label>Contacts</label><br><br>-->
+            <div>
+                <p>
+                    <ons-input style="width: 80%" id="contacts" modifier="underbar" placeholder="Contacts"
+                               float></ons-input>
+                </p>
+            </div>
+            <br><br>
+            <div>
+                <p>
+                    <ons-input style="width: 80%" id="message" modifier="underbar" placeholder="Message"
+                               float></ons-input>
+                </p>
+            </div>
+
+            <div>
+                <br><br>
+                <p style="margin-top: 0px;">
+                    <ons-button style="width: 80%" modifier="large" onclick="">Send</ons-button>
+                </p>
+            </div>
+        </div>
+
+    </ons-page>
+</template>
+
+<!--Contacts-->
+<template id="page4">
+    <ons-page>
+        <ons-page>
+            <!--<ons-list>-->
+            <!--<ons-list-header>Contacts</ons-list-header>-->
+
+            <!--<ons-list-item tappable>-->
+            <!--<label class="left">-->
+            <!--<ons-checkbox input-id="check-1"></ons-checkbox>-->
+            <!--</label>-->
+            <!--<label for="check-1" class="center">-->
+            <!--Apple-->
+            <!--</label>-->
+            <!--</ons-list-item>-->
+
+            <!--<ons-list-item tappable>-->
+            <!--<label class="left">-->
+            <!--<ons-checkbox input-id="check-2"></ons-checkbox>-->
+            <!--</label>-->
+            <!--<label for="check-2" class="center">-->
+            <!--Orange-->
+            <!--</label>-->
+            <!--</ons-list-item>-->
+
+            <!--</ons-list>-->
+        </ons-page>
+    </ons-page>
+</template>
+
+<!--Dashboard-->
+<template id="page5">
+    <ons-page>
+        <br><br>
+        <ons-list modifier="inset">
+            <ons-list-header>Statistics</ons-list-header>
+
+            <ons-list-item>
+                <div class="center" id="dd">
+                    Balance
+                </div>
+                <div class="right">
+                    <ons-input id="dd" value="dasasd"></ons-input>
+                </div>
+            </ons-list-item>
+
+            <ons-list-item>
+                <div class="center">
+                    Total SMS Sent
+                </div>
+                <div class="right">
+                    <b id="ttl">200</b>
+                </div>
+            </ons-list-item>
+
+            <ons-list-item>
+                <div class="center">
+                    Total SMS Expired
+                </div>
+                <div class="right">
+                    <b id="exp">200</b>
+                </div>
+            </ons-list-item>
+
+            <ons-list-item>
+                <div class="center">
+                    Total SMS Delivered
+                </div>
+                <div class="right">
+                    <b id="del">200</b>
+                </div>
+            </ons-list-item>
+
+            <ons-list-item>
+                <div class="center">
+                    Total SMS Undelivered
+                </div>
+                <div class="right">
+                    <b id="undeliv">200</b>
+                </div>
+            </ons-list-item>
+
+            <ons-list-item>
+                <div class="center">
+                    Total SMS Acknowlegded
+                </div>
+                <div class="right">
+                    <b id="ack">200</b>
+                </div>
+            </ons-list-item>
+
+        </ons-list>
+    </ons-page>
+
+</template>
+
+<!--<ons-->
+</body>
+</html>
+
+<!--<ons-list modifier="inset">-->
+<!--<ons-list-header>Inset list</ons-list-header>-->
+<!--<ons-list-item modifier="longdivider">Item A</ons-list-item>-->
+<!--<ons-list-item modifier="longdivider">Item B</ons-list-item>-->
+<!--</ons-list>-->
