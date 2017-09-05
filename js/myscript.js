@@ -50,7 +50,7 @@ function login() {
     }
 
     if (username.length > 0 && password.length > 0) {
-
+        alert('here now');
         //login api
         $.get("https://deywuro.com/api/login",
             {
@@ -59,7 +59,7 @@ function login() {
             },
 
             function (response) {
-
+                alert(response);
                 if (response.message == "Successful Login") {
 
                     $("#username").val("");
